@@ -1,3 +1,12 @@
+<?php
+  if(!isset($_SESSION)){
+    session_start();
+  }else{
+    if(!isset($_SESSION['username'])){
+      header('location:../index.php');
+    }
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +15,6 @@
   <title>DashBoard</title>
 </head>
 <body>
-  <H1>DashBoard</H1>
+  <H1><?php echo("Welcome ".$_SESSION['username']);?></H1>
 </body>
 </html>
