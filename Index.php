@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="box form-box">
+    <div class="box form-box" id="form-box">
       <?php
         include 'Php/Config.php';
         if(isset($_POST['submit'])){

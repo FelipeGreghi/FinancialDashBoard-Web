@@ -28,9 +28,13 @@ body{
                 0 32px 64px -48px rgba(0,0,0,0.5);
 }
 .form-box{
-    width: 450px;
     margin: 0 10px;
 }
+
+#form-box{
+    width: 450px;
+}
+
 .form-box header{
     font-size: 25px;
     font-weight: 600;
@@ -54,7 +58,7 @@ body{
 }
 .btn{
     height: 35px;
-    background: rgba(76,68,182,0.808);
+    background: #6c66c0;
     border: 0;
     border-radius: 5px;
     color: #fff;
@@ -74,7 +78,7 @@ body{
     margin-bottom: 15px;
 }
 .links a{
-    color: rgba(76,68,182,0.808);
+    color: #6c66c0;
     text-decoration: none;
     font-size: 14px;
 }
@@ -87,6 +91,8 @@ body{
     line-height: 60px;
     width: 100%;
     z-index: 100;
+    position: sticky;
+    top: 0;
 }
 
 .logo{
@@ -120,9 +126,10 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 25px;
 }
 
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 1200px) {
     .bottom-home{
         display: flex;
         flex-direction: column;
@@ -132,16 +139,30 @@ main{
 
 .content-table{
     border-collapse: collapse;
-    margin: 25px 0;
     font-size: 0.9em;
-    min-width: 400px;
+    width: 100%;
+    height: 100%;
 }
 
-.content-table thead tr{
-    background-color: rgba(76,68,182,0.608);
+.content-table th {
+    background-color: #6c66c0;
     color: #ffffff;
     text-align: left;
     font-weight: bold;
+    position: sticky;
+    top: 0;
+}
+
+.table-delimiter{
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 25px 0;
+    min-height: 200px;
+    min-width: 25%;
+}
+
+.table-delimiter > table{
+    width: 100%;
 }
 
 .content-table th, td{
@@ -151,4 +172,22 @@ main{
 
 .content-table tbody tr{
     border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type{
+    border-bottom: 2px solid #6c66c0;
+}
+
+#cadaster {
+    display: none;
+}
+
+.second-form form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
