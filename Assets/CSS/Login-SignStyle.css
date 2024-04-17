@@ -113,12 +113,15 @@ main{
 }
 
 .container-home{
-    margin: 25px 0;
     width: 70%;;
 }
 
-.bottom-home .box{
+.top-home{
     margin: 25px 0;
+}
+
+.bottom-home .box{
+    margin: 15px 0;
     width: 100%;
 }
 
@@ -182,7 +185,7 @@ main{
     border-bottom: 2px solid #6c66c0;
 }
 
-#cadaster {
+#cadaster1, #cadaster2{
     display: none;
 }
 
@@ -190,4 +193,15 @@ main{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+#card1{
+    width: 100%;
 }
