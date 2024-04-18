@@ -57,7 +57,7 @@ body{
     outline: none;
 }
 .btn{
-    height: 35px;
+    min-height: 35px;
     background: #6c66c0;
     border: 0;
     border-radius: 5px;
@@ -130,6 +130,7 @@ main{
     flex-direction: row;
     justify-content: space-between;
     gap: 25px;
+    height: 70vh;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -157,7 +158,6 @@ main{
 }
 
 .table-delimiter{
-    max-height: 200px;
     overflow-y: auto;
     margin: 25px 0;
     min-height: 200px;
@@ -200,8 +200,4 @@ main{
     flex-direction: row;
     justify-content: space-between;
     gap: 15px;
-}
-
-#card1{
-    width: 100%;
 }

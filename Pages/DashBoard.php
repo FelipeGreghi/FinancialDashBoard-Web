@@ -1,10 +1,13 @@
 <?php
-  if(!isset($_SESSION)){
+  if (session_status() == PHP_SESSION_NONE) {
     session_start();
-  }else{
-    if(!isset($_SESSION['username'])){
-      header('location:../index.php');
-    }
+  }
+
+  // Verifica se o usuário está logado
+  if (!isset($_SESSION['id'])) {
+      // Redireciona para a página de login
+      header("Location: ../index.php");
+      exit();
   }
 ?>
 <!DOCTYPE html>
@@ -26,7 +29,7 @@
       <a href="DashBoard.php">Home</a>
       <a href="#">About</a>
       <a href="#">Contact</a>
-      <a href="#">Services</a>
+      <a href="Services.php">Import CSV</a>
       <a href="../Php/Logout.php"><button class="btn">Log Out</button></a>
 
     </div>
@@ -84,9 +87,35 @@
             $result = mysqli_stmt_get_result($stmt);
             $row = mysqli_fetch_assoc($result);
             echo "<h3>Categoria com mais gastos</h3>";
-            echo "<h1>".$row['categorie']."</h1>";
-            echo "<p>R$ ".number_format($row['total'], 2, ',', '.')."</p>";
-            ?>
+            if ($row) {
+              echo "<h1>".$row['categorie']."</h1>";
+              echo "<p>R$ ".number_format($row['total'], 2, ',', '.')."</p>";
+            } else {
+                echo "<p>Nenhuma despesa registrada neste mês</p>";
+            }
+            
+          ?>
+        </div>
+        <div class="box">
+          <?php
+            include '../Php/Config.php';
+            $userId = $_SESSION['id'];
+            $currentMonth = date('m');
+            $currentYear = date('Y');
+            $sql = "SELECT description, value FROM expenses WHERE userId = ? AND MONTH(date) = ? AND YEAR(date) = ? ORDER BY value DESC LIMIT 1";
+            $stmt = mysqli_prepare($con, $sql);
+            mysqli_stmt_bind_param($stmt, 'isi', $userId, $currentMonth, $currentYear);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_assoc($result);
+            echo "<h3>Maior despesa do mês</h3>";
+            if ($row) {
+              echo "<h1>".$row['description']."</h1>";
+              echo "<p>R$ ".number_format($row['value'], 2, ',', '.')."</p>";
+            } else {
+                echo "<p>Nenhuma despesa registrada neste mês</p>";
+            }
+          ?>
         </div>
       </div>
       <div class="bottom-home">
